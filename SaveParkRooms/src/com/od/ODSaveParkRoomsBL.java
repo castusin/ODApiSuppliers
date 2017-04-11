@@ -26,7 +26,7 @@ public class ODSaveParkRoomsBL {
 	  
 	public CISResults saveParkRooms(ODSaveParkRoomsModel saveParkRooms) {
 		
-		  // ODSaveParkInfoModel park = new ODSaveParkInfoModel();
+		 
 		
 		// Capture service Start time
 		    testServiceTime seriveTimeCheck=new testServiceTime();
