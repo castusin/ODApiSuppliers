@@ -56,9 +56,19 @@
 			<location>E:/GitHub/ODApiSuppliers/CommonCISValidation/src</location>
 		</link>
 		<link>
+			<name>SaveParkFacilities</name>
+			<type>2</type>
+			<location>E:/GitHub/ODApiSuppliers/SaveParkFacilities/src</location>
+		</link>
+		<link>
 			<name>SaveParkInfo</name>
 			<type>2</type>
 			<location>E:/GitHub/ODApiSuppliers/SaveParkInfo/src</location>
+		</link>
+		<link>
+			<name>SaveParkPricing</name>
+			<type>2</type>
+			<location>E:/GitHub/ODApiSuppliers/SaveParkPricing/src</location>
 		</link>
 		<link>
 			<name>SaveParkRooms</name>

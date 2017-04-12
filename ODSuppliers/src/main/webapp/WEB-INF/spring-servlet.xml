@@ -21,6 +21,13 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
+	<bean id="SaveParkFacilitiesDAO" class="com.od.ODSaveParkFacilitiesDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
+	
+	<bean id="SaveParkPricingDAO" class="com.od.ODSaveParkPricingDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
 	
  <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
 <property name="driverClassName" value="com.mysql.jdbc.Driver" />  

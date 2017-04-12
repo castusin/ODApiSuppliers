@@ -10,6 +10,8 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/CISSessions"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/CISDataCommon"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/SaveParkRooms"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/SaveParkFacilities"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/SaveParkPricing"/>
         <property name="context-root" value="ODSuppliers"/>
         <property name="java-output-path" value="/ODSuppliers/target/classes"/>
     </wb-module>
