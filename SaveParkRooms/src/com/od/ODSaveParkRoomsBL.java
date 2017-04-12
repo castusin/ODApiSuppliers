@@ -21,12 +21,7 @@ public class ODSaveParkRoomsBL {
 	ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-servlet.xml"); 
 	ODSaveParkRoomsDAO parkRoomsDAO=(ODSaveParkRoomsDAO)ctx.getBean("SaveParkRoomsDAO");
 	
-	// private static final AtomicInteger count = new AtomicInteger(100001); 
-	  
-	  
 	public CISResults saveParkRooms(ODSaveParkRoomsModel saveParkRooms) {
-		
-		 
 		
 		// Capture service Start time
 		    testServiceTime seriveTimeCheck=new testServiceTime();
@@ -44,22 +39,8 @@ public class ODSaveParkRoomsBL {
 		     formatter.setTimeZone(obj);
 		     String ODDate=formatter.format(currentdate.getTime());
 		   		 int parkId=	 saveParkRooms.getParkId();
-			 CISResults cisResults = parkRoomsDAO.saveParkRooms(parkId,saveParkRooms.getRoomTypeCode(),saveParkRooms.getRommTypeDescription(),saveParkRooms.getMaxPeople(),saveParkRooms.getMaxAdults(),saveParkRooms.getMaxKids(),saveParkRooms.getMaxQty(),saveParkRooms.getRegularPrice(),ODDate);
+			 CISResults cisResults = parkRoomsDAO.saveParkRooms(parkId,saveParkRooms.getFacilityTypeCode(),saveParkRooms.getFacilityType(),saveParkRooms.getRommTypeDescription(),saveParkRooms.getMaxPeople(),saveParkRooms.getMaxAdults(),saveParkRooms.getMaxKids(),saveParkRooms.getMaxQty(),saveParkRooms.getRegularPrice(),ODDate);
 			
-			
-			/* parkRooms=saveParkInfoDAO.saveParkRooms(parkId,saveParkInfo.getParkRooms());
-			 
-			CISResults.setParkRooms(parkRooms);
-			 
-			 parkFacilities=saveParkInfoDAO.saveParkFacilities(parkId,facilitiesModel.getFacilityTypeCode(),facilitiesModel.getFacilityTypeDescription(),facilitiesModel.getTicketType(),facilitiesModel.getMaxQty(),facilitiesModel.getCurrentAvailableQty(),facilitiesModel.getPrice());
-			 
-			 CISResults.setParkFacilities(parkFacilities);
-			 parkPricing=saveParkInfoDAO.saveParkFacilities(parkId,pricingModel.getRoomTypeCode(),pricingModel.getFromDate(),pricingModel.getToDate(),pricingModel.getCurrentPrice());
-			 
-			 CISResults.setParkPricing(parkPricing);*/
-			 
-			 
-			 
 			 logger.debug("save ParkInfoBL service" +cisResults);
 			 
 			// Capture Service End time

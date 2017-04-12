@@ -6,7 +6,8 @@ import java.sql.Date;
 public class ODSaveParkRoomsModel {
 	
 	int parkId;
-	String roomTypeCode;
+	String facilityTypeCode;
+	String facilityType;
 	String rommTypeDescription;
 	String maxPeople;
 	String maxAdults;
@@ -17,9 +18,9 @@ public class ODSaveParkRoomsModel {
 	
 	
 	
-	public ODSaveParkRoomsModel(String roomTypeCode, String rommTypeDescription, String maxPeople, String maxKids, String maxAdults, String maxQty, String regularPrice, Date dateAdded, int parkId) {
+	public ODSaveParkRoomsModel(String rommTypeDescription, String maxPeople, String maxKids, String maxAdults, String maxQty, String regularPrice, Date dateAdded, int parkId, String facilityTypeCode) {
 		super();
-		this.roomTypeCode=roomTypeCode;
+		this.facilityTypeCode=facilityTypeCode;
 		this.rommTypeDescription=rommTypeDescription;
 		this.maxPeople=maxPeople;
 		this.maxAdults=maxAdults;
@@ -42,16 +43,28 @@ public class ODSaveParkRoomsModel {
 		this.parkId = parkId;
 	}
 
-
-
-	public String getRoomTypeCode() {
-		return roomTypeCode;
+	public String getFacilityTypeCode() {
+		return facilityTypeCode;
 	}
 
 
-	public void setRoomTypeCode(String roomTypeCode) {
-		this.roomTypeCode = roomTypeCode;
+
+	public void setFacilityTypeCode(String facilityTypeCode) {
+		this.facilityTypeCode = facilityTypeCode;
 	}
+
+
+
+	public String getFacilityType() {
+		return facilityType;
+	}
+
+
+
+	public void setFacilityType(String facilityType) {
+		this.facilityType = facilityType;
+	}
+
 
 
 	public String getRommTypeDescription() {

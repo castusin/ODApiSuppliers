@@ -9,15 +9,15 @@ import com.cis.CISResults;
 public class ODSaveParkRoomsDAO extends JdbcDaoSupport{
 
 	
-	public CISResults saveParkRooms(int parkId, String roomTypeCode,
-			String rommTypeDescription, String maxPeople, String maxAdults,
+	public CISResults saveParkRooms(int parkId, String facilityTypeCode,
+			String facilityType, String rommTypeDescription, String maxPeople, String maxAdults,
 			String maxKids, String maxQty, String regularPrice, String oDDate) {
 		CISResults cisResults=new CISResults();
 		
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		
 		try{
-			 getJdbcTemplate().update(ODSaveParkRoomsQuery.SQL_SAVEPARKSROOMS,parkId,roomTypeCode,rommTypeDescription,maxPeople,maxAdults,maxKids,maxQty,regularPrice,oDDate);
+			 getJdbcTemplate().update(ODSaveParkRoomsQuery.SQL_SAVEPARKSROOMS,parkId,facilityTypeCode,facilityType,rommTypeDescription,maxPeople,maxAdults,maxKids,maxQty,regularPrice,oDDate);
 	
 			} catch (DataAccessException e) {
 			e.printStackTrace();
@@ -29,4 +29,6 @@ public class ODSaveParkRoomsDAO extends JdbcDaoSupport{
  		return cisResults;  
 
 	}
+
+	
 }
