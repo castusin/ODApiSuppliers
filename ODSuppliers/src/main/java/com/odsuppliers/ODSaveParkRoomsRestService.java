@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cis.CISConstants;
 import com.cis.CISResults;
+import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 import com.google.gson.Gson;
 import com.od.ODSaveParkInfoModel;
@@ -25,25 +26,34 @@ import com.od.ODSaveParkRoomsModel;
 import com.od.ODSaveParkRoomsWebservice;
 import com.validation.CommonCISValidation;
 
+/**
+ * Rest Controller : Checks if account already exists
+ * 
+ * @author Castus Info Solutions
+ * 
+ *  
+ * 
+ * 
+ * 
+ */
 
 @RestController
 public class ODSaveParkRoomsRestService {
 
+	/**
+	 * @param request
+	 * @param saveParkRooms
+	 * @return 1 in case of error or 0 if successful
+	 */
 	@RequestMapping(value="/saveParkRooms",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	 public String saveParkRooms(HttpServletRequest request,@RequestBody ODSaveParkRoomsModel saveParkRooms){
 		
 		 Logger logger = Logger.getLogger(ODSaveParksInfoRestService.class);
-		 /* String requestParameters = "appId=" + registration.appId + "&userId=" + registration.userId + "&firstName=" +           
-				 registration.firstName +"&lastName=" +registration.lastName + "&phoneNumber="+registration.phoneNumber+ "&emailId="+registration.emailId+ "&photo="+registration.photo+ "&accountType="+registration.accountType+ "&gender="+registration.gender+ "&dob="+registration.dob+ "&date="+registration.date;
-		  logger.info("Digital HealthCare SaveProfile Request Parameters :"+requestParameters);*/
-		  
-		 // Capture service Start time
-		  testServiceTime sessionTimeCheck=new testServiceTime();
-		  Calendar currentdate = Calendar.getInstance();
-		  DateFormat formatter = new SimpleDateFormat(CISConstants.DATE_FORMAT);
-		  TimeZone obj = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
-		  formatter.setTimeZone(obj);
-		  String serviceStartTime=formatter.format(currentdate.getTime());
+		// Capture service Start time
+			
+	     TimeCheck time=new TimeCheck();
+	     testServiceTime seriveTimeCheck=new testServiceTime();
+	     String serviceStartTime=time.getTimeZone();
 		 
 		 CommonCISValidation CommonCISValidation=new CommonCISValidation();
 		  CISResults CISResults=CommonCISValidation.SaveParkRoomsValidation(saveParkRooms,request);
@@ -52,14 +62,12 @@ public class ODSaveParkRoomsRestService {
 			  ODSaveParkRoomsWebservice parkRoomsWebservice = new ODSaveParkRoomsWebservice();
 		      CISResults = parkRoomsWebservice.saveParkRooms(saveParkRooms);
 		    }
-		// Capture Service End time
-		  Calendar ServiceEnd= Calendar.getInstance();
-	      DateFormat formatter1 = new SimpleDateFormat(CISConstants.DATE_FORMAT);
-	      TimeZone obj1 = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
-	      formatter1.setTimeZone(obj1);
-		  String serviceEndTime=formatter1.format(ServiceEnd.getTime());
-		  sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		
+		   // Capture Service End time
+
+		    String serviceEndTime=time.getTimeZone();
+		    long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+		    logger.info("Total service time for get save park rooms service:: " +result );
+
 		  
 		  return returnJsonData(CISResults);
 	}

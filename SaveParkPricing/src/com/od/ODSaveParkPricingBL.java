@@ -14,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.cis.CISConstants;
 import com.cis.CISResults;
+import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
 
@@ -22,18 +23,18 @@ public class ODSaveParkPricingBL {
 	ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-servlet.xml"); 
 	ODSaveParkPricingDAO saveParkPricingDAO=(ODSaveParkPricingDAO)ctx.getBean("SaveParkPricingDAO");
 	
-	// private static final AtomicInteger count = new AtomicInteger(100001); 
-	  
-	  
+	
+	/**
+	 * @param saveParkPricing
+	 * @return 1 in case of error or 0 if successful
+	 */
 	public CISResults saveParkPricing(ODSaveParkPricingModel saveParkPricing) {
 		
 		// Capture service Start time
-		    testServiceTime seriveTimeCheck=new testServiceTime();
-		    Calendar current = Calendar.getInstance();
-		    DateFormat formatterTime = new SimpleDateFormat(CISConstants.DATE_FORMAT);
-		    TimeZone objTime = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
-		    formatterTime.setTimeZone( objTime);
-		    String serviceStartTime=formatterTime.format(current.getTime());
+		
+	     TimeCheck time=new TimeCheck();
+	     testServiceTime seriveTimeCheck=new testServiceTime();
+	     String serviceStartTime=time.getTimeZone();
 		 			
 			 final Logger logger = Logger.getLogger(ODSaveParkInfoBL.class);
 			 int parkId = saveParkPricing.getParkId();
@@ -48,13 +49,12 @@ public class ODSaveParkPricingBL {
 			 
 			 logger.debug("save ParkInfoBL service" +cisResults);
 			 
-			// Capture Service End time
-			  Calendar ServiceEnd= Calendar.getInstance();
-		      DateFormat formatter1 = new SimpleDateFormat(CISConstants.DATE_FORMAT);
-		      TimeZone obj1 = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
-		      formatter1.setTimeZone(obj1);
-			  String serviceEndTime=formatter1.format(ServiceEnd.getTime());
-			  seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+			   // Capture Service End time
+
+			    String serviceEndTime=time.getTimeZone();
+			    long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+			    logger.info("Database time for save park pricing service:: " +result );
+
 			  
 			 return cisResults;
 		}
