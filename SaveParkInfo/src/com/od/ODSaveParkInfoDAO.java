@@ -15,7 +15,7 @@ public class ODSaveParkInfoDAO extends JdbcDaoSupport {
 			String parkSubcategory, String metro, String localArea,
 			String streetAddress, String city, String state, String pin,
 			String name, String description, String details,int parkId, int odRating,
-			int sponsoredFeaturedFlag,  String overviewText, String faq,
+			String sponsoredFeaturedFlag,  String overviewText, String faq,
 			String latitude, String longitude, String typeString,
 			String natureString, String subCategoryString,
 			String durationString, String maxPeople, String ODDate,
